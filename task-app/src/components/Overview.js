@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 
 class Overview extends Component {
     constructor(props) {
@@ -9,13 +9,15 @@ class Overview extends Component {
         const { tasks } = this.props;
         return (
             <div className="overview">
-                {tasks.map((e, i) => {
-                    return (
-                        <div className="task" key={i}>
-                            {e}
-                        </div>
-                    );
-                })}
+                <ul className="taskList">
+                    {tasks.map((e) => {
+                        return (
+                            <li className="task" key={e.id}>
+                                {e.text}
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         );
     }

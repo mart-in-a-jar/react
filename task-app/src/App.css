@@ -1,3 +1,7 @@
 .overview {
-  margin-top: 30px;
+    margin-top: 30px;
+}
+
+form * {
+    margin-right: 5px;
 }

@@ -1,14 +1,18 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Overview from "./components/Overview";
+import uniqid from "uniqid";
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            task: {
+                text: "",
+                id: uniqid("task_"),
+            },
             tasks: [],
-            inputText: "",
         };
 
         this.handleInput = this.handleInput.bind(this);
@@ -17,21 +21,30 @@ class App extends Component {
     }
 
     handleInput(e) {
-        this.setState({
-            inputText: e.target.value,
+        this.setState((state) => {
+            return {
+                task: {
+                    text: e.target.value,
+                    id: state.task.id,
+                },
+            };
         });
     }
 
     handleEnter(e) {
-        if (e.key === "Enter") this.addTask();
+        if (e.key === "Enter") this.addTask(e);
     }
 
-    addTask() {
-        if (this.state.inputText) {
+    addTask(e) {
+        e.preventDefault();
+        if (this.state.task.text) {
             this.setState((state) => {
                 return {
-                    tasks: [...state.tasks, this.state.inputText],
-                    inputText: "",
+                    task: {
+                        text: "",
+                        id: uniqid("task_"),
+                    },
+                    tasks: [...state.tasks, this.state.task],
                 };
             });
         }
@@ -39,20 +52,23 @@ class App extends Component {
     }
 
     render() {
+        const { task, tasks } = this.state;
         return (
             <div className="app">
-                <input
-                    autoFocus
-                    type="text"
-                    placeholder="Task..."
-                    value={this.state.inputText}
-                    onChange={this.handleInput}
-                    onKeyDown={this.handleEnter}
-                />
-                <button type="submit" onClick={this.addTask}>
-                    Add
-                </button>
-                <Overview tasks={this.state.tasks} />
+                <form onSubmit={this.addTask}>
+                    <label htmlFor="taskInput">Enter task</label>
+                    <input
+                        id="taskInput"
+                        autoFocus
+                        type="text"
+                        placeholder="Task..."
+                        value={task.text}
+                        onChange={this.handleInput}
+                        onKeyDown={this.handleEnter}
+                    />
+                    <button type="submit">Add</button>
+                </form>
+                <Overview tasks={tasks} />
             </div>
         );
     }
