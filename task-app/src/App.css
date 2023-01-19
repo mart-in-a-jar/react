@@ -5,3 +5,43 @@
 form * {
     margin-right: 5px;
 }
+
+li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 5px;
+    position: relative;
+}
+
+li .title {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+li input {
+  position: absolute;
+  width: 80px;
+  display: none;
+  left: 15px;
+}
+
+input.active {
+  display: block;
+}
+
+.delete,
+.edit {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.363);
+}
+
+.delete:hover {
+    color: rgb(110, 0, 0);
+}
+
+.edit:hover {
+  color: black
+}

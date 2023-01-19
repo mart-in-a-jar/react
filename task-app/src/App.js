@@ -11,13 +11,16 @@ class App extends Component {
             task: {
                 text: "",
                 id: uniqid("task_"),
+                number: null,
             },
             tasks: [],
+            numberOfTasks: 0,
         };
 
         this.handleInput = this.handleInput.bind(this);
         this.addTask = this.addTask.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
     }
 
     handleInput(e) {
@@ -26,6 +29,7 @@ class App extends Component {
                 task: {
                     text: e.target.value,
                     id: state.task.id,
+                    number: state.numberOfTasks + 1,
                 },
             };
         });
@@ -45,10 +49,26 @@ class App extends Component {
                         id: uniqid("task_"),
                     },
                     tasks: [...state.tasks, this.state.task],
+                    numberOfTasks: state.numberOfTasks + 1,
                 };
             });
         }
         document.querySelector("input").focus();
+    }
+
+    deleteTask(taskID) {
+        const newArr = [...this.state.tasks];
+        let taskNo;
+        for (let e of newArr) {
+            if (e.id === taskID) {
+                taskNo = newArr.indexOf(e);
+                break;
+            }
+        }
+        newArr.splice(taskNo, 1);
+        this.setState({
+            tasks: newArr,
+        });
     }
 
     render() {
@@ -68,10 +88,12 @@ class App extends Component {
                     />
                     <button type="submit">Add</button>
                 </form>
-                <Overview tasks={tasks} />
+                <Overview tasks={tasks} deleteFunc={this.deleteTask} />
             </div>
         );
     }
 }
+
+// pass function to delete task to Overview
 
 export default App;
