@@ -4,6 +4,7 @@ import MyComponent2 from "./components/MyComponent2";
 import Clock from "./components/Clock";
 import MyComponent3 from "./components/MyComponent3";
 import "./App.css";
+import CounterParent from "./components/CounterParent";
 
 class App extends Component {
     constructor(props) {
@@ -61,9 +62,10 @@ class App extends Component {
                 <p>Custom props:</p>
                 <MyComponent3 names="Nombre" />
                 <p>Map array of elements to component:</p>
-                {arr.map(e => {
-                    return <MyComponent2 title={e}/>
+                {arr.map((e) => {
+                    return <MyComponent2 key={arr.indexOf(e)} title={e} />;
                 })}
+                <CounterParent />
             </div>
         );
     }
