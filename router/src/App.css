@@ -1,0 +1,38 @@
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+}
+
+
+
+.menu {
+    /* max-width: 900px; */
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(147, 58, 182, 0.801);
+    margin: 0;
+    height: 50px;
+}
+
+.menu a {
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 10px;
+    background-color: rgb(147, 58, 182);
+}
+
+.menu a:hover {
+    background-color: rgb(116, 41, 146);    
+}

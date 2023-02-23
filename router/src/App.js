@@ -1,10 +1,14 @@
+import Header from "./Header";
+import RouteSwitch from "./RouteSwitch";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-     Hei
-    </div>
-  );
+    return (
+        <>
+            <Header />
+            <RouteSwitch />
+        </>
+    );
 }
 
 export default App;
