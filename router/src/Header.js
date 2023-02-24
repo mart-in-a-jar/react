@@ -1,18 +1,19 @@
 import paths from "./paths";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <header>
             <ul className="menu">
-                <a href={paths.home}>
+                <Link to={paths.home}>
                     <li>Home</li>
-                </a>
-                <a href={paths.profile}>
+                </Link>
+                <Link to={paths.profile}>
                     <li>Profile</li>
-                </a>
-                <a href={paths.faq}>
+                </Link>
+                <Link to={paths.faq}>
                     <li>FAQ</li>
-                </a>
+                </Link>
             </ul>
         </header>
     );
