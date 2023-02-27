@@ -5,6 +5,7 @@ import paths from "./paths";
 export const Shop = () => {
     useEffect(() => {
         fetchItems();
+        document.title = "Shop";
     }, []);
 
     const [items, setItems] = useState([]);
@@ -30,23 +31,24 @@ export const Shop = () => {
 };
 
 export const ShopItem = () => {
-
     const { id } = useParams();
+    // define location since it is an object. else we get an 'undefined error'
     const [item, setItem] = useState({ location: {} });
 
     useEffect(() => {
-
         const fetchItem = async () => {
             const result = await fetch(
                 `https://rickandmortyapi.com/api/character/${id}`
             ).then((data) => data.json());
             setItem(result);
         };
-
         fetchItem();
     }, [id]);
 
-    // define location since it is an object. else we get an 'undefined error'
+    useEffect(() => {
+        if (item.name) document.title = item.name;
+        console.log(item.name);
+    }, [item.name]);
 
     return (
         <div>
