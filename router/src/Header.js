@@ -1,22 +1,23 @@
 import paths from "./paths";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+// NavLink gets "active" class, Link do not
 
 const Header = () => {
     return (
         <nav>
             <ul className="menu">
-                <Link to={paths.home}>
+                <NavLink to={paths.home}>
                     <li>Home</li>
-                </Link>
-                <Link to={paths.profile}>
+                </NavLink>
+                <NavLink to={paths.profile}>
                     <li>Profile</li>
-                </Link>
-                <Link to={paths.shop}>
+                </NavLink>
+                <NavLink to={paths.shop}>
                     <li>Shop</li>
-                </Link>
-                <Link to={paths.faq}>
+                </NavLink>
+                <NavLink to={paths.faq}>
                     <li>FAQ</li>
-                </Link>
+                </NavLink>
             </ul>
         </nav>
     );

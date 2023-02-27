@@ -33,6 +33,11 @@ body {
     background-color: rgb(147, 58, 182);
 }
 
+.menu a.active {
+    background-color: rgb(86, 12, 116);
+    border: 1px solid rgb(57, 26, 82);
+}
+
 .menu a:hover {
     background-color: rgb(116, 41, 146);    
 }
